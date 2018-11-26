@@ -5,7 +5,7 @@ pkiecpkiec - Demo of a Public Key Infrastructure using EC
 
 Send an 256 bit key asymmetrically encrypted with ECDH.
 
-Use prime256v1 (= NIST P-256 = secp256r1) for compatibility with browser [Webcrypto](https://github.com/diafygi/webcrypto-examples).
+Use prime256v1 (= NIST P-256 = secp256r1) for compatibility with browser [Webcrypto](https://github.com/diafygi/webcrypto-examples#ecdh).
 
 Use EC public key compression.
 
