@@ -1,7 +1,0 @@
-D:\Hermes\EFSTA\pkiec\dotnet\bin\Debug\dotnet.exe.config
-D:\Hermes\EFSTA\pkiec\dotnet\bin\Debug\dotnet.exe
-D:\Hermes\EFSTA\pkiec\dotnet\bin\Debug\dotnet.pdb
-D:\Hermes\EFSTA\pkiec\dotnet\obj\Debug\dotnet.csprojAssemblyReference.cache
-D:\Hermes\EFSTA\pkiec\dotnet\obj\Debug\dotnet.csproj.CoreCompileInputs.cache
-D:\Hermes\EFSTA\pkiec\dotnet\obj\Debug\dotnet.exe
-D:\Hermes\EFSTA\pkiec\dotnet\obj\Debug\dotnet.pdb
