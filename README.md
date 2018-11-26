@@ -1,4 +1,4 @@
-# pkiecpkiec - Demo of a Public Key Infrastructure using EC
+# pkiec - Demo of a Public Key Infrastructure using EC
 
 ---
 ## Target
