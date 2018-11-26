@@ -1,0 +1,8 @@
+﻿https://blogs.msdn.microsoft.com/shawnfa/2007/01/22/elliptic-curve-diffie-hellman/
+
+https://stackoverflow.com/questions/22468102/ecdiffiehellmancng-implementation-and-mechanism
+
+https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.ecdiffiehellman?view=netframework-4.7.2
+
+public static System.Security.Cryptography.ECDiffieHellman Create (System.Security.Cryptography.ECCurve curve);
+https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.eccurve?view=netframework-4.7.2
