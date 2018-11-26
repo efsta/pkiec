@@ -1,7 +1,7 @@
 pkiecpkiec - Demo of a Public Key Infrastructure using EC
 
 ---
-Target:
+## Target
 
 Send an 256 bit key asymmetrically encrypted with ECDH.
 
