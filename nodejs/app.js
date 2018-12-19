@@ -18,7 +18,8 @@ var key = Buffer.alloc(32, 0x11)                // key to send (11111... hex)
 var token = Buffer.alloc(65)                    // byte 0-31: encrypted key, 32-64: session public key
 var ecdh = Crypto.createECDH('prime256v1')
 ecdh.generateKeys()                             // random session key
-var skey = ecdh.computeSecret(pubkey, 'base64') // derive session private key upon receiver public key
+var skey = ecdh.computeSecret(pubkey, 'base64') // DH secret value upon receiver public key
+skey = Crypto.createHash('sha256').update(skey).digest() // derive session private key according to DHIES
 skey.forEach(function (v, i) { token[i] = key[i] ^ v }) // and encrypt
 ecdh.getPublicKey(null, 'compressed').copy(token, 32) // append session public key
 token = token.toString('base64')
@@ -30,5 +31,6 @@ var key = token.slice(0, 32)                    // key to receive
 var ecdh = Crypto.createECDH('prime256v1')
 ecdh.setPrivateKey(privkey, 'base64')           // load private key from local storage
 var skey = ecdh.computeSecret(token.slice(32))  // load session public key
+skey = Crypto.createHash('sha256').update(skey).digest() // derive session private key
 skey.forEach(function (v, i) { key[i] ^= v })   // and decrypt
 console.log('key:', key.toString('hex'))        // 11111... hex expected
