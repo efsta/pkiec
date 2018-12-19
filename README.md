@@ -3,7 +3,7 @@
 ---
 ## Target
 
-Send an 256 bit key asymmetrically encrypted with ECDH, basically following [ECIES/ECAES](https://cseweb.ucsd.edu/~mihir/papers/dhaes.pdf)
+Send an 256 bit key asymmetrically encrypted with ECDH, basically following [ECIES/ECAES](https://cseweb.ucsd.edu/~mihir/papers/dhaes.pdf).
 
 Use prime256v1 (= NIST P-256 = secp256r1) for compatibility with browser [Web Crypto API](https://github.com/diafygi/webcrypto-examples#ecdh).
 
