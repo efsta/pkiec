@@ -36,7 +36,8 @@ async function send(key, pubkey) {              // sender encrypts
     var ecpub = await Crypto.importKey('raw', pubkey, { name: 'ECDH', namedCurve: 'P-256'}, false, [])
     var token = new Uint8Array(65)              // byte 0-31: encrypted key, 32-64: session public key
     var ecdh = await Crypto.generateKey({ name: 'ECDH', namedCurve: 'P-256' }, false, ['deriveBits'])
-    var skey = new Uint8Array(await Crypto.deriveBits({ name: 'ECDH', namedCurve: 'P-256', public: ecpub }, ecdh.privateKey, 256))
+    var skey = await Crypto.deriveBits({ name: 'ECDH', namedCurve: 'P-256', public: ecpub }, ecdh.privateKey, 256)
+    skey = new Uint8Array(await Crypto.digest('SHA-256', skey)) // derive session private key
     skey.forEach(function (v, i) { token[i] = key[i] ^ v }) // encrypt (unique session key xor key)
     var spub = await Crypto.exportKey('raw', ecdh.publicKey)
     spub = compress(spub)                       // session public key
@@ -50,7 +51,8 @@ async function receive(token, privkey) {        // receiver decrypts
     var key = token.slice(0, 32)                // key to receive
     var spub = await expand(token.slice(32))    // expand compressed session public key
     spub = await Crypto.importKey('raw', spub, { name: 'ECDH', namedCurve: 'P-256'}, false, [])
-    var skey = new Uint8Array(await Crypto.deriveBits({ name: 'ECDH', namedCurve: 'P-256', public: spub }, ecpriv, 256))
+    var skey = await Crypto.deriveBits({ name: 'ECDH', namedCurve: 'P-256', public: spub }, ecpriv, 256)
+    skey = new Uint8Array(await Crypto.digest('SHA-256', skey)) // derive session private key
     skey.forEach(function (v, i) { key[i] ^= v }) // decrypt
     return key
 }
